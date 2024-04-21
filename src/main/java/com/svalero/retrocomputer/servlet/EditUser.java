@@ -59,7 +59,7 @@ public class EditUser extends HttpServlet {
             }
 
 
-            Database.connect(); //hola
+            Database.connect();
             final String finalrole = role;
             final String finalpassword=password;
             if (id ==0) {
