@@ -109,14 +109,13 @@
         </form>
         <br/>
         <div id="result"></div>
-        <%
-            if (role.equals("admin")) {
-        %>>
-            <br/>
+        <br/>
+        <%if (role.equals("admin")) {%>
             <p><a href="index-user.jsp" class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Volver a Usuarios</a></p>
-        <%
-            }
-        %>
+        <% } else { %>
+            <p><a href="logout" class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Volver a Inicio</a></p>
+        <%}%>
+
     </section>
 </main>
 

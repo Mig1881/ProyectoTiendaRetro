@@ -34,6 +34,7 @@ public class LoginServlet extends HttpServlet {
                 // y le añadimos un atributo, el username y role, que son los permisos que tiene segun tipo de usuario
                 session.setAttribute("username", user.getUsername());
                 session.setAttribute("role", user.getRole());
+                session.setAttribute("id_user", user.getId_user());
                 //es decir guardo informacion en la sesion y esta la puedo recuperar en cualquier parte de la web
                 //simplemete llamando a HttpSession
                 response.getWriter().print("ok");

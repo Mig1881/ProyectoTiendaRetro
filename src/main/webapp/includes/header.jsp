@@ -26,9 +26,15 @@
     HttpSession currentSession = request.getSession();
     String role = "anonymous";
     String username_init ="";
+    int user_id=0;
     if (currentSession.getAttribute("role") != null) {
         role = currentSession.getAttribute("role").toString();
+    }
+    if (currentSession.getAttribute("username") != null) {
         username_init = currentSession.getAttribute("username").toString();
+    }
+    if (currentSession.getAttribute("id_user") != null) {
+        user_id=Integer.parseInt(currentSession.getAttribute("id_user").toString());
     }
 %>
 

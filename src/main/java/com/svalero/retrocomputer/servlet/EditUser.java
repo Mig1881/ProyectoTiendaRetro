@@ -32,7 +32,7 @@ public class EditUser extends HttpServlet {
             }
 
 
-            //Validaciones de los campos del formulario register-product
+            //Validaciones de los campos del formulario register-user
             if (hasValidationErrors(request, response, id))
                 return;
             //Si ha ido bien, pasamos los valores para que se puedan grabar en la BD
@@ -68,9 +68,6 @@ public class EditUser extends HttpServlet {
                                 zip_code, city, country));
                 response.getWriter().println("<div class='alert alert-success' role='alert'>" +
                         "Bienvenido¡¡¡ Ya eres un usuario registrado de RetroByte</div>");
-                HttpSession session = request.getSession();
-                session.setAttribute("username", username);
-                session.setAttribute("role", finalrole);
             } else {
                 final int finalid = id;
                 int affectedRows = Database.jdbi.withExtension(UserDao.class,

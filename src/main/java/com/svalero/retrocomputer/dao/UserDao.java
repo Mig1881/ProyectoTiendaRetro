@@ -3,6 +3,7 @@ package com.svalero.retrocomputer.dao;
 import com.svalero.retrocomputer.domain.Products;
 import com.svalero.retrocomputer.domain.User;
 import org.jdbi.v3.sqlobject.customizer.Bind;
+import org.jdbi.v3.sqlobject.statement.GetGeneratedKeys;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 import org.jdbi.v3.sqlobject.statement.UseRowMapper;
@@ -30,6 +31,7 @@ public interface UserDao {
 
     //Updates
     @SqlUpdate("INSERT INTO users (name, username, password,role,tel,address,zip_code,city,country) VALUES (?,?,standard_hash(?),?,?,?,?,?,?)")
+    //   @GetGeneratedKeys
     //La contraseña la cifro justo antes de grabarla en la BD
     int addUser(String name,String username, String password, String role, String tel,String address,String zip_code,String city,String country);
     @SqlUpdate("DELETE FROM users WHERE id_user = ?")
