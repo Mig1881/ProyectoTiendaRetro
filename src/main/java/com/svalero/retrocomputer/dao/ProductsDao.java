@@ -25,8 +25,12 @@ public interface ProductsDao {
             "release_date,product_status,id_supplier) VALUES (?,?,?,?,?,?,?,?)")
     int addProducts(String product_name, String description, float sale_price, int stock_units,
                     String image, Date release_date, String product_status, int id_supplier);
+    @SqlUpdate("DELETE FROM products WHERE id_supplier = ?")
+    int removeProductsSuppliers(int id_supplier);
+
     @SqlUpdate("DELETE FROM products WHERE id_product = ?")
     int removeProducts(int id_product);
+
 
     @SqlQuery("SELECT * FROM products WHERE id_product = ?")
     @UseRowMapper(ProductsMapper.class)

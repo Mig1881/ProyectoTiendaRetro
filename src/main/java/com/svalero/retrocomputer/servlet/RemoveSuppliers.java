@@ -1,6 +1,7 @@
 package com.svalero.retrocomputer.servlet;
 
 import com.svalero.retrocomputer.dao.Database;
+import com.svalero.retrocomputer.dao.ProductsDao;
 import com.svalero.retrocomputer.dao.SuppliersDao;
 
 import javax.servlet.ServletException;
@@ -19,7 +20,9 @@ public class RemoveSuppliers extends HttpServlet {
 
         try {
             Database.connect();
-            int affectedRows = Database.jdbi.withExtension(SuppliersDao.class,
+            int affectedRows = Database.jdbi.withExtension(ProductsDao.class,
+                    dao -> dao.removeProductsSuppliers(id_supplier));
+            int affectedRows1 = Database.jdbi.withExtension(SuppliersDao.class,
                     dao -> dao.removeSuppliers(id_supplier));
             response.sendRedirect("index-suppliers.jsp");
         } catch (ClassNotFoundException cnfe) {

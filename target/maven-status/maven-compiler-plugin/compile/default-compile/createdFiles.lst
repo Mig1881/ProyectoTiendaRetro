@@ -20,7 +20,6 @@ com\svalero\retrocomputer\dao\UserMapper.class
 com\svalero\retrocomputer\dao\Orders_doneMapper.class
 com\svalero\retrocomputer\dao\UserDao.class
 com\svalero\retrocomputer\dao\Orders_doneDao.class
-com\svalero\retrocomputer\servlet\AddOrders.class
 com\svalero\retrocomputer\servlet\EditSuppliers.class
 com\svalero\retrocomputer\dao\Database.class
 com\svalero\retrocomputer\dao\ProductsMapper.class
