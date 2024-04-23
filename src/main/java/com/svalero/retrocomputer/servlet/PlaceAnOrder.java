@@ -30,6 +30,10 @@ public class PlaceAnOrder extends HttpServlet {
             Database.jdbi.withExtension(Orders_doneDao.class, dao -> dao.addOrders_done(new Date(System.currentTimeMillis()),
                     products.getSale_price(), id_user,id_product));
 
+            final int stock_unitsfinal = 0;
+            int affectedRows = Database.jdbi.withExtension(ProductsDao.class,
+                    dao -> dao.updateProductsStock(stock_unitsfinal,id_product));
+
             response.sendRedirect("index-sales.jsp");
         } catch (ClassNotFoundException cnfe) {
             cnfe.printStackTrace();

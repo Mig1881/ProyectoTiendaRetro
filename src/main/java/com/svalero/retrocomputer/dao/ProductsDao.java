@@ -37,5 +37,6 @@ public interface ProductsDao {
     int updateProducts(String product_name, String description, float sale_price, int stock_units,String image,
                        Date release_date, String product_status, int id_supplier, int id_product);
 
-
+    @SqlUpdate("UPDATE products SET stock_units =? WHERE id_product = ?")
+    int updateProductsStock(int stock_units, int id_product);
 }

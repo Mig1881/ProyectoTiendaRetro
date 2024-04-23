@@ -25,7 +25,7 @@
             %>
             <br/>
             <div class="container bg-dark">
-                <h2 class="text-danger">Listado de Productos comprados por "<%=username_init%></h2>
+                <h2 class="text-danger">Listado de Productos comprados por <%=username_init%></h2>
 
                 <br/>
 
