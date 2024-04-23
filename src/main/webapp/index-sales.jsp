@@ -65,8 +65,8 @@
                         <td><%=orders_done.getId_order()%></td>
                         <td><%=orders_done.getUser().getName()%></td>
                         <td><%=DateUtils.formatUser(orders_done.getOrder_date())%></td>
-                        <td><%=orders_done.getProducts().getId_product()%></td>
-                        <td><%=orders_done.getProducts().getProduct_name()%></td>
+                        <td><%=orders_done.getId_product()%></td>
+                        <td><%=orders_done.getProduct_name()%></td>
                         <td><%= CurrencyUtils.format(orders_done.getTotal_price()) %></td>
 
                     </tr>

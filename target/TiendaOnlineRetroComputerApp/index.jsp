@@ -72,6 +72,15 @@
                 } else {
                 %>
                      <h3 class="text-success">---Productos Estrella---</h3>
+                <br/>
+                <%
+                    if (role.equals("user")){
+                %>
+                    <a href="index-sales.jsp" class="btn btn-sm btn-outline-primary" type="button">Ver mis pedidos</a>
+                    <a href="register-user.jsp?id_user=<%=user_id%>" class="btn btn-sm btn-outline-danger" type="button">Cambiar datos de mi Usuario</a>
+                <%
+                        }
+                %>
                 <%
                     }
                 %>

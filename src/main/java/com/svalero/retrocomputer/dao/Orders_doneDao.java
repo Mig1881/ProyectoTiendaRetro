@@ -20,7 +20,7 @@ public interface Orders_doneDao {
     @UseRowMapper(Orders_doneMapper.class)
     Orders_done getOrders_done(int id_order);
 
-    @SqlUpdate("INSERT INTO orders_done (order_date, total_price, id_user, id_product) VALUES (?, ?, ?, ?)")
-    int addOrders_done(Date order_date,float total_price, int id_user,int id_product);
+    @SqlUpdate("INSERT INTO orders_done (order_date, total_price, id_user, id_product,product_name) VALUES (?, ?, ?, ?, ?)")
+    int addOrders_done(Date order_date,float total_price, int id_user,int id_product,String product_name);
 
 }

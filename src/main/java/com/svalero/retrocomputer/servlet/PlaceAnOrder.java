@@ -28,7 +28,7 @@ public class PlaceAnOrder extends HttpServlet {
 
             Products products = Database.jdbi.withExtension(ProductsDao.class, dao -> dao.getOneProducts(id_product));
             Database.jdbi.withExtension(Orders_doneDao.class, dao -> dao.addOrders_done(new Date(System.currentTimeMillis()),
-                    products.getSale_price(), id_user,id_product));
+                    products.getSale_price(), id_user,id_product, products.getProduct_name()));
 
             final int stock_unitsfinal = 0;
             int affectedRows = Database.jdbi.withExtension(ProductsDao.class,

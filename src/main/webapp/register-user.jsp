@@ -15,16 +15,18 @@
         });
     });
 </script>
+
 <%
+
     User user=null;
     int id;
     //El id = 0 no es nunca un numero valido para un id, por eso ponemos 0, eso quiere decir que no existe
     //Asi ya tenemos una doble funcionalidad para este id
     if (request.getParameter("id_user") == null){
-        // Se accede al formulario para crear una nueva actividad
+        // Se accede al formulario para crear un nuevo usuario
         id = 0;
     } else {
-        // Se accede al formulario para editar una actividad ya existente
+        // Se accede al formulario para editar un usuario ya existente
         id=Integer.parseInt(request.getParameter("id_user"));
         try {
             Database.connect();
@@ -113,7 +115,11 @@
         <%if (role.equals("admin")) {%>
             <p><a href="index-user.jsp" class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Volver a Usuarios</a></p>
         <% } else { %>
-            <p><a href="logout" class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Volver a Inicio</a></p>
+            <% if (id ==0) {%>
+                <p><a href="logout" class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Volver a Inicio</a></p>
+            <% } else { %>
+                <p><a href="index.jsp" class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Volver a Inicio</a></p>
+            <%}%>
         <%}%>
 
     </section>

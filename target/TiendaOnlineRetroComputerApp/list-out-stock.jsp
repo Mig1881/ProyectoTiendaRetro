@@ -33,6 +33,7 @@
                         <th>Telefono</th>
                         <th>Email</th>
                         <th>Website</th>
+                        <th> </th>
                     </tr>
                     </thead>
                     <tbody>
@@ -72,7 +73,7 @@
                                     <td><%=suppliers.getTel()%></td>
                                     <td><%=suppliers.getEmail()%></td>
                                     <td><%=suppliers.getWebsite()%></td>
-
+                                    <td><a href="remove-products?id_product=<%= products.getId_product()%>" type="button" class="btn btn-sm btn-outline-danger">Eliminar</a></td>
                                 </tr>
                     <%
                                 }
