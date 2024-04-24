@@ -72,7 +72,7 @@
                         <td><%=user.getRole()%></td>
                         <td><%=user.getCity()%></td>
                         <th><a href="view-user.jsp?id_user=<%= user.getId_user()%>" type="button" class="btn btn-sm btn-outline-success">Ver Usuario</a></th>
-                        <th><a href="register-user.jsp?id_user=<%= user.getId_user()%>" type="button" class="btn btn-sm btn-outline-primary">Editar Usuario</a></th>
+<%--                        <th><a href="register-user.jsp?id_user=<%= user.getId_user()%>" type="button" class="btn btn-sm btn-outline-primary">Editar Usuario</a></th>--%>
                         <th> <a href="remove-user?id_user=<%= user.getId_user()%>" type="button" class="btn btn-sm btn-outline-danger">Eliminar Usuario</a></th>
 
                     </tr>

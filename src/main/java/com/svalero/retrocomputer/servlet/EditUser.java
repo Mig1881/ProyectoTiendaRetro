@@ -71,7 +71,7 @@ public class EditUser extends HttpServlet {
             } else {
                 final int finalid = id;
                 int affectedRows = Database.jdbi.withExtension(UserDao.class,
-                        dao -> dao.updateUser(name, username, finalrole, tel, address,
+                        dao -> dao.updateUser(name, username, finalpassword, finalrole, tel, address,
                                 zip_code, city, country, finalid));
                 response.getWriter().println("<div class='alert alert-success' role='alert'>" +
                         "Modificacion de usuario realizada correctamente</div>");
@@ -92,7 +92,7 @@ public class EditUser extends HttpServlet {
     private boolean hasValidationErrors(HttpServletRequest request, HttpServletResponse response,int id) throws IOException {
         boolean hasErrors = false;
         if (request.getParameter("name").isBlank()) {
-            sendError("Nombre del ususrio es un campo obligatorio", response);
+            sendError("Nombre del usuario es un campo obligatorio", response);
             hasErrors = true;
         }
 
@@ -101,12 +101,12 @@ public class EditUser extends HttpServlet {
             hasErrors = true;
         }
         //Password solo se valida si es nuevo
-        if (id ==0) {
+//        if (id ==0) {
             if (request.getParameter("password").isBlank()) {
                 sendError("Password es un campo obligatorio", response);
                 hasErrors = true;
             }
-        }
+//        }
         if (request.getParameter("tel").isBlank()) {
             sendError("Telefono es un campo obligatorio", response);
             hasErrors = true;

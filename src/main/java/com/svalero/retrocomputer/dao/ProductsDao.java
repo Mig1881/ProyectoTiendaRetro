@@ -21,9 +21,9 @@ public interface ProductsDao {
     List<Products> getProducts(@Bind("searchTerm") String searchTerm);
 
 
-    @SqlUpdate("INSERT INTO products (product_name,description,sale_price,stock_units,image," +
-            "release_date,product_status,id_supplier) VALUES (?,?,?,?,?,?,?,?)")
-    int addProducts(String product_name, String description, float sale_price, int stock_units,
+    @SqlUpdate("INSERT INTO products (product_name,description,sale_price,image," +
+            "release_date,product_status,id_supplier) VALUES (?,?,?,?,?,?,?)")
+    int addProducts(String product_name, String description, float sale_price,
                     String image, Date release_date, String product_status, int id_supplier);
     @SqlUpdate("DELETE FROM products WHERE id_supplier = ?")
     int removeProductsSuppliers(int id_supplier);
@@ -36,9 +36,9 @@ public interface ProductsDao {
     @UseRowMapper(ProductsMapper.class)
     Products getOneProducts(int id_product);
 
-    @SqlUpdate("UPDATE products SET product_name =?, description=?, sale_price =?, stock_units =?, image =?," +
+    @SqlUpdate("UPDATE products SET product_name =?, description=?, sale_price =?, image =?," +
             "release_date=?, product_status=?,id_supplier =? WHERE id_product = ?")
-    int updateProducts(String product_name, String description, float sale_price, int stock_units,String image,
+    int updateProducts(String product_name, String description, float sale_price, String image,
                        Date release_date, String product_status, int id_supplier, int id_product);
 
     @SqlUpdate("UPDATE products SET stock_units =? WHERE id_product = ?")

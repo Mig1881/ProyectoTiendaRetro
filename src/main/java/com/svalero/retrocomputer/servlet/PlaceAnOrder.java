@@ -3,7 +3,9 @@ package com.svalero.retrocomputer.servlet;
 import com.svalero.retrocomputer.dao.Database;
 import com.svalero.retrocomputer.dao.Orders_doneDao;
 import com.svalero.retrocomputer.dao.ProductsDao;
+import com.svalero.retrocomputer.dao.SuppliersDao;
 import com.svalero.retrocomputer.domain.Products;
+import com.svalero.retrocomputer.domain.Suppliers;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,13 +24,16 @@ public class PlaceAnOrder extends HttpServlet {
         int id_product = Integer.parseInt(request.getParameter("id_product"));
         HttpSession session = request.getSession();
         int id_user = Integer.parseInt(session.getAttribute("id_user").toString());
-
+        String username = session.getAttribute("username").toString();
         try {
             Database.connect();
 
             Products products = Database.jdbi.withExtension(ProductsDao.class, dao -> dao.getOneProducts(id_product));
+
+            Suppliers suplliers = Database.jdbi.withExtension(SuppliersDao.class, dao -> dao.getOneSuppliers(products.getId_supplier()));
             Database.jdbi.withExtension(Orders_doneDao.class, dao -> dao.addOrders_done(new Date(System.currentTimeMillis()),
-                    products.getSale_price(), id_user,id_product, products.getProduct_name()));
+                    products.getSale_price(),id_product,products.getProduct_name(),suplliers.getName(),id_user,username));
+
 
             final int stock_unitsfinal = 0;
             int affectedRows = Database.jdbi.withExtension(ProductsDao.class,

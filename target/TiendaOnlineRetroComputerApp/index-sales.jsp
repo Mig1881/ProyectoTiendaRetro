@@ -37,10 +37,10 @@
                     <thead>
                     <tr>
                         <th>Id del Pedido</th>
-                        <th>Nombre Usuario</th>
                         <th>Fecha del Pedido</th>
                         <th>Id del Producto</th>
                         <th>Nombre Producto</th>
+                        <th>Nombre del Proveedor</th>
                         <th>Precio Total</th>
                     </tr>
                     </thead>
@@ -63,10 +63,10 @@
                     %>
                     <tr>
                         <td><%=orders_done.getId_order()%></td>
-                        <td><%=orders_done.getUser().getName()%></td>
                         <td><%=DateUtils.formatUser(orders_done.getOrder_date())%></td>
                         <td><%=orders_done.getId_product()%></td>
                         <td><%=orders_done.getProduct_name()%></td>
+                        <td><%=orders_done.getSupplier_name()%></td>
                         <td><%= CurrencyUtils.format(orders_done.getTotal_price()) %></td>
 
                     </tr>

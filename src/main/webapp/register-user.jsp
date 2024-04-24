@@ -59,12 +59,12 @@
                 <input type="text" name="username" class="form-control" id="username" placeholder="Ejemplo:  Mig12876"
                 <% if (id !=0) {%> value="<%=user.getUsername()%>"<% }%>>
             </div>
-            <% if (id==0) {%>
+
                 <div class="mb-3 text-white bg-dark">
                     <label for="password" class="form-label">Password</label>
                      <input type="text" name ="password" class="form-control" id="password" placeholder="Ejemplo Labcdef1B">
                 </div>
-            <% } %>
+<%--                <% if (id !=0) {%> value="<%=user.getUsername()%>"<% }%>>--%>
             <div class="mb-3 text-white bg-dark">
                 <label for="address" class="form-label">Direccion</label>
                 <input type="text" name ="address" class="form-control" id="address" placeholder="Ejemplo Calle...."
@@ -113,7 +113,7 @@
         <div id="result"></div>
         <br/>
         <%if (role.equals("admin")) {%>
-            <p><a href="index-user.jsp" class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Volver a Usuarios</a></p>
+            <p><a href="index.jsp" class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Volver a Inicio</a></p>
         <% } else { %>
             <% if (id ==0) {%>
                 <p><a href="logout" class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Volver a Inicio</a></p>

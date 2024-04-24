@@ -49,7 +49,6 @@ public class EditProducts extends HttpServlet {
             String product_status = request.getParameter("product_status");
             Date release_date = DateUtils.parse(request.getParameter("release_date"));
             float sale_price = CurrencyUtils.parse(request.getParameter("sale_price"));
-            int stock_units = Integer.parseInt(request.getParameter("stock_units"));
             int id_supplier = Integer.parseInt(request.getParameter("id_supplier"));
 
             //gestion de la imagen
@@ -75,14 +74,14 @@ public class EditProducts extends HttpServlet {
             final String finalFilename = filename;
             if (id ==0) {
                 int affectedRows = Database.jdbi.withExtension(ProductsDao.class,
-                dao -> dao.addProducts(product_name, description, sale_price, stock_units, finalFilename,
+                dao -> dao.addProducts(product_name, description, sale_price, finalFilename,
                        release_date,product_status,id_supplier));
                 response.getWriter().println("<div class='alert alert-success' role='alert'>" +
                     "Producto Registrado correctamente</div>");
             } else {
                 final int finalId=id;
                 int affectedRows = Database.jdbi.withExtension(ProductsDao.class,
-                dao -> dao.updateProducts(product_name, description, sale_price, stock_units, finalFilename,
+                dao -> dao.updateProducts(product_name, description, sale_price, finalFilename,
                        release_date,product_status,id_supplier,finalId));
                 response.getWriter().println("<div class='alert alert-success' role='alert'>" +
                         "Producto modificado correctamente</div>");
@@ -105,11 +104,6 @@ public class EditProducts extends HttpServlet {
         boolean hasErrors = false;
         if (request.getParameter("product_name").isBlank()) {
             sendError("El nombre del producto es un campo obligatorio", response);
-            hasErrors = true;
-        }
-
-        if (!NumberUtils.isCreatable(request.getParameter("stock_units"))) {
-            sendError("Formato de unidades en Stock ha de ser númerico", response);
             hasErrors = true;
         }
 

@@ -46,9 +46,9 @@
            <%
            } else {
            %>
+           <h4 class="text-danger"><%= username_init%></h4>
+           <p><a href="register-user.jsp?id_user=<%=user_id%>" class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">&nbsp;&nbsp;Modificar mi Usuario&nbsp;&nbsp;</a></p>
            <a href="logout" title="Cerrar sesión"><img src="icons/exit.png" height="50" width="50"/></a>
-           <p class="text-danger"><%= username_init%></p>
-
            <%
                }
            %>
@@ -68,6 +68,7 @@
                     <a href="register-product.jsp" class="btn btn-sm btn-outline-primary" type="button">Alta Producto</a>
                     <a href="index-user.jsp" class="btn btn-sm btn-outline-danger" type="button">Usuarios</a>
                     <a href="index-suppliers.jsp" class="btn btn-sm btn-outline-primary" type="button">Proveedores</a>
+                    <a href="all-orders_done.jsp" class="btn btn-sm btn-outline-danger" type="button">Pedidos Realizados</a>
                 <%
                 } else {
                 %>
@@ -77,7 +78,6 @@
                     if (role.equals("user")){
                 %>
                     <a href="index-sales.jsp" class="btn btn-sm btn-outline-primary" type="button">Ver mis pedidos</a>
-                    <a href="register-user.jsp?id_user=<%=user_id%>" class="btn btn-sm btn-outline-danger" type="button">Cambiar datos de mi Usuario</a>
                 <%
                         }
                 %>

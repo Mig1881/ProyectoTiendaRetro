@@ -94,11 +94,6 @@
                 <% if (id !=0) {%> value="<%= CurrencyUtils.format(products.getSale_price()) %>"<% }%>>
             </div>
             <div class="col-md-2  text-white bg-dark">
-                <label for="stock_units" class="form-label">Unidades en Stock</label>
-                <input type="text" name ="stock_units" class="form-control" id="stock_units" placeholder="1"
-                <% if (id !=0) {%> value="<%=products.getStock_units()%>"<% }%>>
-            </div>
-            <div class="col-md-2  text-white bg-dark">
                 <label for="release_date" class="form-label">Fecha de lanzamiento</label>
                 <input type="date" name="release_date" class="form-control" id="release_date" placeholder="dd/mm/yyyy"
                 <% if (id !=0) {%> value="<%=DateUtils.format(products.getRelease_date())%>"<% }%>>

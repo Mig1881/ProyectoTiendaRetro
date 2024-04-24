@@ -36,9 +36,9 @@ public interface UserDao {
     int addUser(String name,String username, String password, String role, String tel,String address,String zip_code,String city,String country);
     @SqlUpdate("DELETE FROM users WHERE id_user = ?")
     int removeUser(int id_user);
-    @SqlUpdate("UPDATE users set name =?, username=?, role = ?,tel = ?,address= ?,zip_code= ?,city= ?,country= ? WHERE id_user = ?")
+    @SqlUpdate("UPDATE users set name =?, username=?, password=standard_hash(?), role = ?,tel = ?,address= ?,zip_code= ?,city= ?,country= ? WHERE id_user = ?")
         //nota la contraseña se actualiza de otra manera de momento no lo hacemos
-    int updateUser(String name,String username,String role,String tel,String address,String zip_code,String city,String country, int id_user);
+    int updateUser(String name,String username,String password,String role,String tel,String address,String zip_code,String city,String country, int id_user);
 
 
 }

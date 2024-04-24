@@ -15,7 +15,9 @@ public class Orders_done {
     private float total_price;
     private int id_product;
     private String product_name;
-    private User user;
+    private String supplier_name;
+    private int id_user;
+    private String username;
 }
 
 
@@ -31,7 +33,9 @@ public class Orders_done {
 //total_price number(7,2),
 //id_product number(9),
 //product_name varchar2(50),
+//supplier_name varchar2(50), ----->nuevo
 //id_user number(9),
+//username varchar2(50),    ---->nuevo
 //constraint orders_done_pk primary key(id_order)
 //);
 
