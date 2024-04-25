@@ -125,7 +125,7 @@ public class EditUser extends HttpServlet {
             hasErrors = true;
         }
 
-        if (request.getParameter("zip_code").isBlank()) {
+        if (request.getParameter("country").isBlank()) {
             sendError("Pais es un campo obligatorio", response);
             hasErrors = true;
         }
