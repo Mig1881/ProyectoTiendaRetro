@@ -55,7 +55,7 @@
                         String search = "";
                         if (request.getParameter("search") != null)
                             search = request.getParameter("search");
-
+                        float total_sale=0;
                         try {
                             Database.connect();
                         } catch (ClassNotFoundException e) {
@@ -72,11 +72,12 @@
                         }
 
                         for (Orders_done orders_done : orders_dones) {
+                          total_sale=total_sale+orders_done.getTotal_price();
                     %>
 
                     <tr>
                         <td><%=orders_done.getId_order()%></td>
-                        <td><%=DateUtils.formatUser(orders_done.getOrder_date())%></td>
+                        <td><%=DateUtils.formatOrder(orders_done.getOrder_date())%></td>
                         <td><%=orders_done.getUsername()%></td>
                         <td><%=orders_done.getId_product()%></td>
                         <td><%=orders_done.getProduct_name()%></td>
@@ -87,6 +88,16 @@
                     <%
                         }
                     %>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>Total Pedidos:&nbsp<%= CurrencyUtils.format(total_sale) %></th>
+
+                    </tr>
                     </tbody>
                 </table>
 
