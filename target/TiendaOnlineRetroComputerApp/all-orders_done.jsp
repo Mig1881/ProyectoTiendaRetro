@@ -11,24 +11,24 @@
 <%@ page import="com.svalero.retrocomputer.util.DateUtils" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="includes/header.jsp"%>
+<script>
+    $(document).ready(function () {
+        $("#search-input").focus();
+    });
+</script>
 
-
-
-
-
-        <main>
-            <%
-                if (request.getSession().getAttribute("id_user") == null) {
-                    response.sendRedirect("index.jsp");
-                }
-                        //Si no eres un usuario registrado no puedes entrar a esta pagina
-            %>
+    <main>
             <br/>
             <div class="container bg-dark">
-                <h2 class="text-danger">Listado de Productos comprados por <%=username_init%></h2>
+                <h2 class="text-danger">Listado de Pedidos Realizados por Usuarios</h2>
 
                 <br/>
-
+                <form class="row g-2" id="search-form" method="GET">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Buscar en Pedidos" name="search" id="search-input">
+                        <button type="submit" class="btn btn-outline-danger"  id="search-button">Buscar</button>
+                    </div>
+                </form>
             </div>
 
             <div class="container my-6 bg-dark">
@@ -38,6 +38,7 @@
                     <tr>
                         <th>Id del Pedido</th>
                         <th>Fecha del Pedido</th>
+                        <th>Nombre del Usuario</th>
                         <th>Id del Producto</th>
                         <th>Nombre Producto</th>
                         <th>Nombre del Proveedor</th>
@@ -45,7 +46,16 @@
                     </tr>
                     </thead>
                     <tbody>
+
                     <%
+                        if (!role.equals("admin")){
+                            response.sendRedirect("/retrocomputer");
+                        }
+                        //Si no eres el administrador no puedes entrar a esta pagina
+                        String search = "";
+                        if (request.getParameter("search") != null)
+                            search = request.getParameter("search");
+                        float total_sale=0;
                         try {
                             Database.connect();
                         } catch (ClassNotFoundException e) {
@@ -53,17 +63,22 @@
                         } catch (SQLException e) {
                             throw new RuntimeException(e);
                         }
-                        final int finaluser_id = user_id;
-                        List<Orders_done> orders_dones = Database.jdbi.withExtension(Orders_doneDao.class, dao -> dao.getOrders_doneByUser(finaluser_id));
+                        List<Orders_done> orders_dones = null;
+                        if (search.isEmpty()) {
+                            orders_dones = Database.jdbi.withExtension(Orders_doneDao.class, dao -> dao.getAllOrders());
+                        } else {
+                            final String searchTerm = search;
+                            orders_dones = Database.jdbi.withExtension(Orders_doneDao.class, dao -> dao.getOrders(searchTerm));
+                        }
 
-                    %>
-                    <%
                         for (Orders_done orders_done : orders_dones) {
-
+                          total_sale=total_sale+orders_done.getTotal_price();
                     %>
+
                     <tr>
                         <td><%=orders_done.getId_order()%></td>
                         <td><%=DateUtils.formatOrder(orders_done.getOrder_date())%></td>
+                        <td><%=orders_done.getUsername()%></td>
                         <td><%=orders_done.getId_product()%></td>
                         <td><%=orders_done.getProduct_name()%></td>
                         <td><%=orders_done.getSupplier_name()%></td>
@@ -73,6 +88,16 @@
                     <%
                         }
                     %>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>Total Pedidos:&nbsp<%= CurrencyUtils.format(total_sale) %></th>
+
+                    </tr>
                     </tbody>
                 </table>
 
