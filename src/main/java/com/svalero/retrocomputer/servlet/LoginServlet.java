@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
             if (user != null) {
                 HttpSession session = request.getSession();
                 //la sesion se puede recuperar desde cualquier sitio,
-                // y le añadimos un atributo, el username y role, que son los permisos que tiene segun tipo de usuario
+                // y le añadimos atributos: username, role, id_user
                 session.setAttribute("username", user.getUsername());
                 session.setAttribute("role", user.getRole());
                 session.setAttribute("id_user", user.getId_user());
@@ -52,8 +52,6 @@ public class LoginServlet extends HttpServlet {
             response.getWriter().println("<div class='alert alert-danger' role='alert'>" +
                     "Error conectando con la base de datos</div>");
         }
-
-
 
     }
 }

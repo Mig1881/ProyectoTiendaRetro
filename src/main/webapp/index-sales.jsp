@@ -13,9 +13,6 @@
 <%@include file="includes/header.jsp"%>
 
 
-
-
-
         <main>
             <%
                 if (request.getSession().getAttribute("id_user") == null) {

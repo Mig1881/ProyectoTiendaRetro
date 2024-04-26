@@ -18,11 +18,4 @@ public class User {
     private String zip_code;
     private String city;
     private String country;
-
 }
-
-
-
-
-
-

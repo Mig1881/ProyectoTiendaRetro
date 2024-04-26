@@ -31,7 +31,7 @@ public class EditProducts extends HttpServlet {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
 
-
+        //solo puede crear y editar productos el administrador
         HttpSession currentSession = request.getSession();
         if (currentSession.getAttribute("role") != null) {
             if (!currentSession.getAttribute("role").equals("admin")) {

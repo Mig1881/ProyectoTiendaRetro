@@ -30,8 +30,6 @@ public class EditUser extends HttpServlet {
             if (request.getParameter("id_user") != null){
               id = Integer.parseInt(request.getParameter("id_user"));
             }
-
-
             //Validaciones de los campos del formulario register-user
             if (hasValidationErrors(request, response, id))
                 return;
@@ -48,7 +46,7 @@ public class EditUser extends HttpServlet {
             String city = request.getParameter("city");
             String country = request.getParameter("country");
             String role = "user";
-            //solo el administrador es capaz de crear administradores
+            //solo el administrador es capaz de cambiarse el role
             HttpSession currentSession = request.getSession();
             if (currentSession.getAttribute("role") != null) {
                 if (currentSession.getAttribute("role").equals("admin")) {
@@ -57,7 +55,6 @@ public class EditUser extends HttpServlet {
                     }
                 }
             }
-
 
             Database.connect();
             final String finalrole = role;
@@ -100,13 +97,11 @@ public class EditUser extends HttpServlet {
             sendError("Username es un campo obligatorio", response);
             hasErrors = true;
         }
-        //Password solo se valida si es nuevo
-//        if (id ==0) {
-            if (request.getParameter("password").isBlank()) {
+
+        if (request.getParameter("password").isBlank()) {
                 sendError("Password es un campo obligatorio", response);
                 hasErrors = true;
-            }
-//        }
+        }
         if (request.getParameter("tel").isBlank()) {
             sendError("Telefono es un campo obligatorio", response);
             hasErrors = true;

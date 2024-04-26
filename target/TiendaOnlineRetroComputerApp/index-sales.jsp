@@ -13,9 +13,6 @@
 <%@include file="includes/header.jsp"%>
 
 
-
-
-
         <main>
             <%
                 if (request.getSession().getAttribute("id_user") == null) {
@@ -63,7 +60,7 @@
                     %>
                     <tr>
                         <td><%=orders_done.getId_order()%></td>
-                        <td><%=DateUtils.formatUser(orders_done.getOrder_date())%></td>
+                        <td><%=DateUtils.formatOrder(orders_done.getOrder_date())%></td>
                         <td><%=orders_done.getId_product()%></td>
                         <td><%=orders_done.getProduct_name()%></td>
                         <td><%=orders_done.getSupplier_name()%></td>

@@ -1,9 +1,7 @@
 package com.svalero.retrocomputer.dao;
 
-import com.svalero.retrocomputer.domain.Products;
 import com.svalero.retrocomputer.domain.User;
 import org.jdbi.v3.sqlobject.customizer.Bind;
-import org.jdbi.v3.sqlobject.statement.GetGeneratedKeys;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 import org.jdbi.v3.sqlobject.statement.UseRowMapper;
@@ -23,7 +21,7 @@ public interface UserDao {
     @UseRowMapper(UserMapper.class)
     User getUser(String username, String password);
     //Vamos a tener que hacer un acceso teniendo el username que debe se UNIQUE en BD y el password
-    //Esto va devolver unicamente una fila unica , ya quiue el username es UNIQUE
+    //Esto va devolver unicamente una fila unica , ya que el username es UNIQUE
     @SqlQuery("SELECT * FROM users WHERE name LIKE '%'||:searchTerm||'%'" +
             "OR username LIKE '%'||:searchTerm||'%' OR city LIKE '%'||:searchTerm||'%' OR role LIKE '%'||:searchTerm||'%'")
     @UseRowMapper(UserMapper.class)
@@ -37,7 +35,6 @@ public interface UserDao {
     @SqlUpdate("DELETE FROM users WHERE id_user = ?")
     int removeUser(int id_user);
     @SqlUpdate("UPDATE users set name =?, username=?, password=standard_hash(?), role = ?,tel = ?,address= ?,zip_code= ?,city= ?,country= ? WHERE id_user = ?")
-        //nota la contraseña se actualiza de otra manera de momento no lo hacemos
     int updateUser(String name,String username,String password,String role,String tel,String address,String zip_code,String city,String country, int id_user);
 
 

@@ -28,9 +28,15 @@
 <%--Otras funciones implementadas: --%>
 <%--            * Control de unidades de Stock, si no hay no deja comprar y da mensaje de sin stock habilitando boton para su consulta con tienda--%>
 <%--            * Obliga a iniciar sesion para iniciar el proceso de compra, localiza si no hay ususario que no ha iniciado sesion, pero deja ver productos de tienda--%>
+<%--            * No se borran productos sin stock para que cliente vea que productos ha habido y sondear posible  interes--%>
+<%--            * En listado de productos sin stock se deja al administrador que decida si borra o no el producto dependiendo del interes u otras razones--%>
 <%--            * Proteccion de acceso a paginas sensibles que solo puede entrar el administrador o el usuario en cada caso-%>
 <%--            * Un usuario que es administrador no puede comprar--%>
+<%--            * Listado de pedidos realizados para administrador, con filtros por busquedas y sumatorio de importe total de datos seleccionados--%>
+<%--            * Un administrador no puede ver la contraseña de ningun usuario, puede ver sus datos y eliminar, pero no ver su contraseña--%>
+<%--            * Se permite modificar a cada usuario(administradores incluidos), modificar sus datos incluido el password --%>
 
+<%--Nota: No estoy matriculado en Lenguaje de marcas ni en Cloud, de ahi que el diseño html sea muy sencillo y no haya implementado contenedores--%>
 
 
 

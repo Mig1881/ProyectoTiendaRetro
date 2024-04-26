@@ -6,6 +6,10 @@
 <%@include file="includes/header.jsp"%>
 <main>
     <%
+        if (!role.equals("admin")){
+            response.sendRedirect("/retrocomputer");
+        }
+        //Si no eres el administrador no puedes entrar a esta pagina
         try {
             Database.connect();
         } catch (ClassNotFoundException e) {

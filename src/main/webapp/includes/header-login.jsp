@@ -36,12 +36,9 @@
         }
         body {
             height: 100%;
-            /*background-image: url("C:\Program Files\Apache Software Foundation\Tomcat 9.0\webapps\retro_pictures\no_image.jpg");*/
         }
 
-         body {
 
-         }
             .form-signin {
             max-width: 330px;
             padding: 1rem;

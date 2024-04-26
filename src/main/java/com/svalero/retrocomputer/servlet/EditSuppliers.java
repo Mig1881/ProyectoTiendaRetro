@@ -24,14 +24,12 @@ public class EditSuppliers extends HttpServlet {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
 
-
         try {
             // Si el id es = 0 sera crear uno nuevo sino es modificacion
             int id =0;
             if (request.getParameter("id_supplier") != null){
               id = Integer.parseInt(request.getParameter("id_supplier"));
             }
-
 
             //Validaciones de los campos del formulario register-product
             if (hasValidationErrors(request, response))
@@ -45,8 +43,6 @@ public class EditSuppliers extends HttpServlet {
             String country = request.getParameter("country");
             String website = request.getParameter("website");
             String email = request.getParameter("email");
-
-
 
             Database.connect();
 
@@ -115,7 +111,6 @@ public class EditSuppliers extends HttpServlet {
             sendError("Email es un campo obligatorio", response);
             hasErrors = true;
         }
-
 
         return hasErrors;
     }

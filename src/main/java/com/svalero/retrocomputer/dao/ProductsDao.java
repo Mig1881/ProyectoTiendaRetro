@@ -13,13 +13,11 @@ public interface ProductsDao {
     @SqlQuery("SELECT * FROM products order by id_product")
     @UseRowMapper(ProductsMapper.class)
     List<Products> getAllProducts();
-    //Nota Muy importante usar el @SqlUpdate, me ha vuelto loco un dia entero
 
     @SqlQuery("SELECT * FROM products WHERE product_name LIKE '%'||:searchTerm||'%'" +
             "OR description LIKE '%'||:searchTerm||'%' OR product_status LIKE '%'||:searchTerm||'%'")
     @UseRowMapper(ProductsMapper.class)
     List<Products> getProducts(@Bind("searchTerm") String searchTerm);
-
 
     @SqlUpdate("INSERT INTO products (product_name,description,sale_price,image," +
             "release_date,product_status,id_supplier) VALUES (?,?,?,?,?,?,?)")
