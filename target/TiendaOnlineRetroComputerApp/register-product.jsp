@@ -1,10 +1,10 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.svalero.retrocomputer.domain.Products" %>
 <%@ page import="com.svalero.retrocomputer.dao.Database" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="com.svalero.retrocomputer.dao.ProductsDao" %>
 <%@ page import="com.svalero.retrocomputer.util.DateUtils" %>
 <%@ page import="com.svalero.retrocomputer.util.CurrencyUtils" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="includes/header.jsp"%>
 
 <script>
@@ -64,7 +64,6 @@
     }
 %>
 <main>
-    <%--        con este section consigo un centrado de todos los textos que estan en medio, queda mal--%>
     <section class="py-5 container">
         <% if (id==0) {%>
         <h3 class="text-danger">Registrar Nuevo Producto</h3>
@@ -75,12 +74,12 @@
         <form class="row g-3 needs-validation bg-dark border-dark" method="post" enctype="multipart/form-data" id="edit-form">
             <div class="mb-3  text-white bg-dark">
                 <label for="product_name" class="form-label">Nombre</label>
-                <input type="text" name="product_name" class="form-control" id="product_name" placeholder="Ejemplo:  Commodore 64"
+                <input type="text" name="product_name" class="form-control" id="product_name" placeholder="Commodore 64"
                     <% if (id !=0) {%> value="<%=products.getProduct_name()%>"<% }%>>
             </div>
             <div class="mb-3  text-white bg-dark">
                 <label for="description" class="form-label">Descripcion</label>
-                <input type="text" name="description" class="form-control" id="description" placeholder="Ejemplo:  Microordenador de 8 bits"
+                <input type="text" name="description" class="form-control" id="description" placeholder="Microordenador de 8 bits"
                     <% if (id !=0) {%> value="<%=products.getDescription()%>"<% }%>>
             </div>
             <div class="mb-3  text-white bg-dark">
@@ -100,7 +99,7 @@
             </div>
             <div class="col-md-2  text-white bg-dark">
                 <label for="id_supplier" class="form-label">Codigo del proveedor</label>
-                <input type="text" name ="id_supplier" class="form-control" id="id_supplier" placeholder="7, codigo proveedor principal"
+                <input type="text" name ="id_supplier" class="form-control" id="id_supplier" placeholder="27"
                 <% if (id !=0) {%> value="<%=products.getId_supplier()%>"<% }%>>
             </div>
             <div class="col-md-4  text-white bg-dark">

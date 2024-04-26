@@ -19,17 +19,16 @@
 
 <%--+++ Otras funcionalidades--%>
 <%--Extra 1: Login de Usuarios--%>
-<%--Extra 2: Relaciones, se ha hecho relacion entre Usuarios y Proveedores en Listado de productos sin Stock(list-out-stock.jsp) y en tabla orders_done con usuarios y productos--%>
+<%--Extra 2: Relaciones, se ha hecho relacion entre Productos y Proveedores en Listado de productos sin Stock(list-out-stock.jsp) y en tabla orders_done con usuarios y productos y proveedores--%>
 <%--Extra 3: Uso de Imagenes en productos.--%>
 <%--Extra 4: Funcionalidad Javascrip. Utilizacion de Ajax--%>
-<%--Extra 5: Implementado Git desde Intellij, se suben versiones directamente a repositorio local y a Github--%>
-<%--Extra 6: trabajo con informacion de una 4 tabla, tabla de Ordes_dones, utilizacion de Objetos en la misma--%>
-<%--Extra 7: Zona Privada de Usuarios no administradores  y zona privada de administradores.--%>
+<%--Extra 5: Implementado Git desde Intellij, se suben los cambios directamente a repositorio local y a Github--%>
+<%--Extra 6: Zona Privada de Usuarios no administradores  y zona privada de administradores.--%>
 <%--Otras funciones implementadas: --%>
 <%--            * Control de unidades de Stock, si no hay no deja comprar y da mensaje de sin stock habilitando boton para su consulta con tienda--%>
 <%--            * Obliga a iniciar sesion para iniciar el proceso de compra, localiza si no hay ususario que no ha iniciado sesion, pero deja ver productos de tienda--%>
 <%--            * No se borran productos sin stock para que cliente vea que productos ha habido y sondear posible  interes--%>
-<%--            * En listado de productos sin stock se deja al administrador que decida si borra o no el producto dependiendo del interes u otras razones--%>
+<%--            * El Listado de productos sin stock se deja al administrador que decida si borra o no el producto dependiendo del interes u otras razones--%>
 <%--            * Proteccion de acceso a paginas sensibles que solo puede entrar el administrador o el usuario en cada caso-%>
 <%--            * Un usuario que es administrador no puede comprar--%>
 <%--            * Listado de pedidos realizados para administrador, con filtros por busquedas y sumatorio de importe total de datos seleccionados--%>
