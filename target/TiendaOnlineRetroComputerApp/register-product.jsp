@@ -4,6 +4,9 @@
 <%@ page import="com.svalero.retrocomputer.dao.ProductsDao" %>
 <%@ page import="com.svalero.retrocomputer.util.DateUtils" %>
 <%@ page import="com.svalero.retrocomputer.util.CurrencyUtils" %>
+<%@ page import="com.svalero.retrocomputer.domain.Suppliers" %>
+<%@ page import="com.svalero.retrocomputer.dao.SuppliersDao" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="includes/header.jsp"%>
 
@@ -97,10 +100,34 @@
                 <input type="date" name="release_date" class="form-control" id="release_date" placeholder="dd/mm/yyyy"
                 <% if (id !=0) {%> value="<%=DateUtils.format(products.getRelease_date())%>"<% }%>>
             </div>
+<%--            Implementacion de desplegable con informacion dinamica de la BD de la tabla de proveedores--%>
             <div class="col-md-2  text-white bg-dark">
-                <label for="id_supplier" class="form-label">Codigo del proveedor</label>
-                <input type="text" name ="id_supplier" class="form-control" id="id_supplier" placeholder="27"
-                <% if (id !=0) {%> value="<%=products.getId_supplier()%>"<% }%>>
+                    <label for="id_supplier" class="form-label">Codigo del roveedor</label>
+                    <select class="form-select" aria-label="Selector de Proveedor" name="id_supplier" id="id_supplier">
+                        <option selected>
+                            <% if (id !=0) {%>
+                            <%=products.getId_supplier()%>
+                            <%} else {%>
+                            Id Supplier/Name
+                            <%}%>
+                        </option>
+                <%
+                    try {
+                        Database.connect();
+                    } catch (ClassNotFoundException e) {
+                        throw new RuntimeException(e);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                    List<Suppliers> listsuppliers = null;
+                    listsuppliers = Database.jdbi.withExtension(SuppliersDao.class, dao -> dao.getAllSuppliers());
+                    for (Suppliers suppliers : listsuppliers) {
+                %>
+                        <option value="<%=suppliers.getId_supplier()%>"><%=suppliers.getId_supplier()%>:&nbsp;<%=suppliers.getName()%></option>
+                <%
+                    }
+                %>
+                </select>
             </div>
             <div class="col-md-4  text-white bg-dark">
                 <label for="image" class="form-label">Imagen Producto</label>

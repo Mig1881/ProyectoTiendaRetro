@@ -15,7 +15,9 @@ public interface ProductsDao {
     List<Products> getAllProducts();
 
     @SqlQuery("SELECT * FROM products WHERE product_name LIKE '%'||:searchTerm||'%'" +
-            "OR description LIKE '%'||:searchTerm||'%' OR product_status LIKE '%'||:searchTerm||'%'")
+            "OR description LIKE '%'||:searchTerm||'%' OR product_status LIKE '%'||:searchTerm||'%'" +
+            "OR TO_CHAR(release_date, 'DD.MM.YYYY') LIKE '%'||:searchTerm||'%' order by id_product")
+
     @UseRowMapper(ProductsMapper.class)
     List<Products> getProducts(@Bind("searchTerm") String searchTerm);
 
@@ -28,6 +30,9 @@ public interface ProductsDao {
 
     @SqlUpdate("DELETE FROM products WHERE id_product = ?")
     int removeProducts(int id_product);
+
+    @SqlUpdate("DELETE FROM products WHERE stock_units = 0")
+    int removeAllSelectProducts();
 
 
     @SqlQuery("SELECT * FROM products WHERE id_product = ?")

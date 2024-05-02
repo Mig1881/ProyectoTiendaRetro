@@ -12,11 +12,14 @@ C:\Users\migue\IdeaProjects\TiendaOnlineRetroComputer\src\main\java\com\svalero\
 C:\Users\migue\IdeaProjects\TiendaOnlineRetroComputer\src\main\java\com\svalero\retrocomputer\dao\UserDao.java
 C:\Users\migue\IdeaProjects\TiendaOnlineRetroComputer\src\main\java\com\svalero\retrocomputer\dao\ProductsDao.java
 C:\Users\migue\IdeaProjects\TiendaOnlineRetroComputer\src\main\java\com\svalero\retrocomputer\dao\Orders_doneMapper.java
+C:\Users\migue\IdeaProjects\TiendaOnlineRetroComputer\src\main\java\com\svalero\retrocomputer\domain\Products_history.java
 C:\Users\migue\IdeaProjects\TiendaOnlineRetroComputer\src\main\java\org\example\Main.java
 C:\Users\migue\IdeaProjects\TiendaOnlineRetroComputer\src\main\java\com\svalero\retrocomputer\domain\Products.java
 C:\Users\migue\IdeaProjects\TiendaOnlineRetroComputer\src\main\java\com\svalero\retrocomputer\dao\SuppliersMapper.java
 C:\Users\migue\IdeaProjects\TiendaOnlineRetroComputer\src\main\java\com\svalero\retrocomputer\dao\UserMapper.java
+C:\Users\migue\IdeaProjects\TiendaOnlineRetroComputer\src\main\java\com\svalero\retrocomputer\servlet\RemoveALLSelectProducts.java
 C:\Users\migue\IdeaProjects\TiendaOnlineRetroComputer\src\main\java\com\svalero\retrocomputer\util\DateUtils.java
+C:\Users\migue\IdeaProjects\TiendaOnlineRetroComputer\src\main\java\com\svalero\retrocomputer\dao\Products_historyDao.java
 C:\Users\migue\IdeaProjects\TiendaOnlineRetroComputer\src\main\java\com\svalero\retrocomputer\dao\SuppliersDao.java
 C:\Users\migue\IdeaProjects\TiendaOnlineRetroComputer\src\main\java\com\svalero\retrocomputer\servlet\PlaceAnOrder.java
 C:\Users\migue\IdeaProjects\TiendaOnlineRetroComputer\src\main\java\com\svalero\retrocomputer\servlet\RemoveUser.java
@@ -24,4 +27,5 @@ C:\Users\migue\IdeaProjects\TiendaOnlineRetroComputer\src\main\java\com\svalero\
 C:\Users\migue\IdeaProjects\TiendaOnlineRetroComputer\src\main\java\com\svalero\retrocomputer\servlet\LoginServlet.java
 C:\Users\migue\IdeaProjects\TiendaOnlineRetroComputer\src\main\java\com\svalero\retrocomputer\domain\User.java
 C:\Users\migue\IdeaProjects\TiendaOnlineRetroComputer\src\main\java\com\svalero\retrocomputer\util\Constants.java
+C:\Users\migue\IdeaProjects\TiendaOnlineRetroComputer\src\main\java\com\svalero\retrocomputer\dao\Products_historyMapper.java
 C:\Users\migue\IdeaProjects\TiendaOnlineRetroComputer\src\main\java\com\svalero\retrocomputer\servlet\EditSuppliers.java

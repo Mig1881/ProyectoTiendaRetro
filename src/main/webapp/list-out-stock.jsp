@@ -22,9 +22,25 @@
     </div>
 
     <div class="container my-6 bg-dark">
-
+        <%
+            if (!role.equals("admin")){
+                response.sendRedirect("/retrocomputer");
+            }
+            //Si no eres el administrador no puedes entrar a esta pagina
+        %>
                 <table class="table table-dark table-striped">
                     <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th><a href="remove-all-selects-products" type="button" class="btn btn-sm btn-outline-danger">Eliminar Todos los Productos sin Stock</a></th>
+
+                    </tr>
                     <tr>
                         <th>Id producto</th>
                         <th>Nombre Producto</th>
@@ -38,10 +54,6 @@
                     </thead>
                     <tbody>
                     <%
-                        if (!role.equals("admin")){
-                            response.sendRedirect("/retrocomputer");
-                        }
-                        //Si no eres el administrador no puedes entrar a esta pagina
                         try {
                             Database.connect();
                         } catch (ClassNotFoundException e) {
@@ -83,7 +95,7 @@
                 </table>
 
         <br/>
-        <p><a href="index.jsp" class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Volver al Menu Inicial</a></p>
+        <p><a href="index-suppliers.jsp" class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Volver a Proveedores</a></p>
     </div>
 
 </main>

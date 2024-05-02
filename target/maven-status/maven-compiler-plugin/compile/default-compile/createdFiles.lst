@@ -2,11 +2,14 @@ com\svalero\retrocomputer\domain\User.class
 com\svalero\retrocomputer\util\CurrencyUtils.class
 com\svalero\retrocomputer\util\Constants.class
 com\svalero\retrocomputer\domain\Products.class
+com\svalero\retrocomputer\servlet\RemoveALLSelectProducts.class
+com\svalero\retrocomputer\domain\Products_history.class
 com\svalero\retrocomputer\servlet\RemoveProducts.class
 com\svalero\retrocomputer\domain\Suppliers.class
 com\svalero\retrocomputer\servlet\EditUser.class
 org\example\Main.class
 com\svalero\retrocomputer\dao\SuppliersDao.class
+com\svalero\retrocomputer\dao\Products_historyDao.class
 com\svalero\retrocomputer\dao\SuppliersMapper.class
 com\svalero\retrocomputer\servlet\EditProducts.class
 com\svalero\retrocomputer\servlet\PlaceAnOrder.class
@@ -21,6 +24,7 @@ com\svalero\retrocomputer\dao\Orders_doneMapper.class
 com\svalero\retrocomputer\dao\UserDao.class
 com\svalero\retrocomputer\dao\Orders_doneDao.class
 com\svalero\retrocomputer\servlet\EditSuppliers.class
+com\svalero\retrocomputer\dao\Products_historyMapper.class
 com\svalero\retrocomputer\dao\Database.class
 com\svalero\retrocomputer\dao\ProductsMapper.class
 com\svalero\retrocomputer\domain\Orders_done.class

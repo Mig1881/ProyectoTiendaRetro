@@ -13,7 +13,7 @@ import java.util.List;
 
 public interface Orders_doneDao {
 
-    @SqlQuery("SELECT * FROM orders_done WHERE id_user = ?")
+    @SqlQuery("SELECT * FROM orders_done WHERE id_user = ? order by id_order,order_date")
     @UseRowMapper(Orders_doneMapper.class)
     List<Orders_done> getOrders_doneByUser(int id_user);
 
@@ -26,7 +26,8 @@ public interface Orders_doneDao {
     Orders_done getOrders_done(int id_order);
 
     @SqlQuery("SELECT * FROM orders_done WHERE product_name LIKE '%'||:searchTerm||'%'" +
-            "OR supplier_name LIKE '%'||:searchTerm||'%' OR username LIKE '%'||:searchTerm||'%'")
+            "OR supplier_name LIKE '%'||:searchTerm||'%' OR username LIKE '%'||:searchTerm||'%'" +
+            "OR TO_CHAR(order_date, 'DD-MM-YYYY') LIKE '%'||:searchTerm||'%' order by order_date, total_price")
     @UseRowMapper(Orders_doneMapper.class)
     List<Orders_done> getOrders(@Bind("searchTerm") String searchTerm);
 
