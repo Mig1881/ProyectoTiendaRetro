@@ -75,7 +75,7 @@
             <p><a href="index-sales.jsp" class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Volver a Mi listado de pedidos</a></p>
         <% }%>
     </div>
-</main>
+</main> 
 
 <%@include file="includes/footer.jsp"%>
 

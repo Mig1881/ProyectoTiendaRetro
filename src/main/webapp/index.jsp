@@ -22,7 +22,7 @@
 <%--Extra 2: Relaciones, se ha hecho relacion entre Productos y Proveedores en Listado de productos sin Stock(list-out-stock.jsp) y en tabla orders_done con usuarios y productos y proveedores--%>
 <%--Extra 3: Uso de Imagenes en productos.--%>
 <%--Extra 4: Funcionalidad Javascrip. Utilizacion de Ajax--%>
-<%--Extra 5: Implementado Git desde Intellij, se suben los cambios directamente a repositorio local y a Github--%>
+<%--Extra 5: Implementado Git desde Intellij, se suben los cambios directamente a repositorio local y a Github, inicio de rama retoque_html_index despues de practicas--%>
 <%--Extra 6: Zona Privada de Usuarios no administradores  y zona privada de administradores.--%>
 <%--Otras funciones implementadas: --%>
 <%--            * Quinta Tabla, Historico de Productos, para guardar toda la informacion de los productos vendidos y poder relacionar con orders_done para obtener informacion del producto--%>
