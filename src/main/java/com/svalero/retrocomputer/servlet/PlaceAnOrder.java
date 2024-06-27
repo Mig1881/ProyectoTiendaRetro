@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 
+
 @WebServlet("/place-an-order")
 public class PlaceAnOrder extends HttpServlet {
     @Override
@@ -22,6 +23,12 @@ public class PlaceAnOrder extends HttpServlet {
         HttpSession session = request.getSession();
         int id_user = Integer.parseInt(session.getAttribute("id_user").toString());
         String username = session.getAttribute("username").toString();
+
+
+// Nota inserta bien la fecha en la bd, que tiene un formato datetime, pero luego al recuperar la informacion
+// No lo hace bien, es curioso que con new Date(System.currentTimeMillis() en oracle lo hace bien y se visualiza tb bien
+
+
         try {
             Database.connect();
 
@@ -33,6 +40,7 @@ public class PlaceAnOrder extends HttpServlet {
                     products.getDescription(),products.getSale_price(),products.getImage(),products.getRelease_date(), products.getProduct_status(), products.getId_supplier()));
 
             Database.jdbi.withExtension(Orders_doneDao.class, dao -> dao.addOrders_done(new Date(System.currentTimeMillis()),
+//            Database.jdbi.withExtension(Orders_doneDao.class, dao -> dao.addOrders_done(fechaHoraActual,
                     products.getSale_price(),id_product,products.getProduct_name(),suplliers.getName(),id_user,username));
 
             int affectedRows = Database.jdbi.withExtension(ProductsDao.class,

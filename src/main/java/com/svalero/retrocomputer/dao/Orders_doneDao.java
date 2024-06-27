@@ -1,12 +1,11 @@
 package com.svalero.retrocomputer.dao;
 
 import com.svalero.retrocomputer.domain.Orders_done;
-import com.svalero.retrocomputer.domain.Products;
-import com.svalero.retrocomputer.domain.User;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 import org.jdbi.v3.sqlobject.statement.UseRowMapper;
+
 
 import java.sql.Date;
 import java.util.List;
@@ -40,8 +39,9 @@ public interface Orders_doneDao {
 
     @SqlUpdate("INSERT INTO orders_done (order_date, total_price, id_product,product_name," +
             "supplier_name,id_user,username) VALUES (?, ?, ?, ?, ?, ?, ?)")
-    int addOrders_done(Date order_date,float total_price, int id_product,String product_name,
-                       String supplier_name,int id_user,String username);
+    int addOrders_done(Date order_date, float total_price, int id_product, String product_name,
+                       String supplier_name, int id_user, String username);
+
 
 }
 
