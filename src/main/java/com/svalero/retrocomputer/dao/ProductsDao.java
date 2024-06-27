@@ -13,10 +13,18 @@ public interface ProductsDao {
     @SqlQuery("SELECT * FROM products order by id_product")
     @UseRowMapper(ProductsMapper.class)
     List<Products> getAllProducts();
+//en Oracle seria asi
+//    @SqlQuery("SELECT * FROM products WHERE product_name LIKE '%'||:searchTerm||'%'" +
+//            "OR description LIKE '%'||:searchTerm||'%' OR product_status LIKE '%'||:searchTerm||'%'" +
+//            "OR TO_CHAR(release_date, 'DD.MM.YYYY') LIKE '%'||:searchTerm||'%' order by id_product")
+//
+//    @UseRowMapper(ProductsMapper.class)
+//    List<Products> getProducts(@Bind("searchTerm") String searchTerm);
 
-    @SqlQuery("SELECT * FROM products WHERE product_name LIKE '%'||:searchTerm||'%'" +
-            "OR description LIKE '%'||:searchTerm||'%' OR product_status LIKE '%'||:searchTerm||'%'" +
-            "OR TO_CHAR(release_date, 'DD.MM.YYYY') LIKE '%'||:searchTerm||'%' order by id_product")
+    @SqlQuery("SELECT * FROM products WHERE product_name LIKE CONCAT('%',:searchTerm,'%') " +
+            "OR description LIKE CONCAT('%',:searchTerm,'%') OR product_status LIKE CONCAT('%',:searchTerm,'%') " +
+//            "OR TO_CHAR(release_date, 'DD.MM.YYYY') LIKE CONCAT('%',:searchTerm,'%') order by id_product")
+            "OR DATE_FORMAT(release_date,'%d.%m.%Y') LIKE CONCAT('%',:searchTerm,'%') order by id_product")
 
     @UseRowMapper(ProductsMapper.class)
     List<Products> getProducts(@Bind("searchTerm") String searchTerm);

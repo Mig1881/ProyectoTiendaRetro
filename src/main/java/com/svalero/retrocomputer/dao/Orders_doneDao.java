@@ -24,10 +24,17 @@ public interface Orders_doneDao {
     @SqlQuery("SELECT * FROM orders_done WHERE id_order = ?")
     @UseRowMapper(Orders_doneMapper.class)
     Orders_done getOrders_done(int id_order);
+// En Oracle serian asi las busquedas
+//    @SqlQuery("SELECT * FROM orders_done WHERE product_name LIKE '%'||:searchTerm||'%'" +
+//            "OR supplier_name LIKE '%'||:searchTerm||'%' OR username LIKE '%'||:searchTerm||'%'" +
+//            "OR TO_CHAR(order_date, 'DD-MM-YYYY') LIKE '%'||:searchTerm||'%' order by order_date, total_price")
+//    @UseRowMapper(Orders_doneMapper.class)
+//    List<Orders_done> getOrders(@Bind("searchTerm") String searchTerm);
 
-    @SqlQuery("SELECT * FROM orders_done WHERE product_name LIKE '%'||:searchTerm||'%'" +
-            "OR supplier_name LIKE '%'||:searchTerm||'%' OR username LIKE '%'||:searchTerm||'%'" +
-            "OR TO_CHAR(order_date, 'DD-MM-YYYY') LIKE '%'||:searchTerm||'%' order by order_date, total_price")
+    @SqlQuery("SELECT * FROM orders_done WHERE product_name LIKE CONCAT ('%',:searchTerm,'%') " +
+            "OR supplier_name LIKE CONCAT('%',:searchTerm,'%') OR username LIKE CONCAT('%',:searchTerm,'%') " +
+//            "OR TO_CHAR(order_date, 'DD-MM-YYYY') LIKE CONCAT('%',:searchTerm,'%') order by order_date, total_price")
+            "OR DATE_FORMAT(order_date,'%d-%m-%Y') LIKE CONCAT('%',:searchTerm,'%') order by order_date, total_price")
     @UseRowMapper(Orders_doneMapper.class)
     List<Orders_done> getOrders(@Bind("searchTerm") String searchTerm);
 

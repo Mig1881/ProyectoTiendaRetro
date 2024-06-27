@@ -16,11 +16,15 @@ public interface SuppliersDao {
     @SqlQuery("SELECT * FROM suppliers WHERE id_supplier = ?")
     @UseRowMapper(SuppliersMapper.class)
     Suppliers getOneSuppliers(int id_supllier);
-
-    @SqlQuery("SELECT * FROM suppliers WHERE name LIKE '%'||:searchTerm||'%'" +
-            "OR city LIKE '%'||:searchTerm||'%' OR email LIKE '%'||:searchTerm||'%'")
-    @UseRowMapper(SuppliersMapper.class)
-    List<Suppliers> getSuppliers(@Bind("searchTerm") String searchTerm);
+// en oracle la busqueda seria asi
+//    @SqlQuery("SELECT * FROM suppliers WHERE name LIKE '%'||:searchTerm||'%'" +
+//            "OR city LIKE '%'||:searchTerm||'%' OR email LIKE '%'||:searchTerm||'%'")
+//    @UseRowMapper(SuppliersMapper.class)
+//    List<Suppliers> getSuppliers(@Bind("searchTerm") String searchTerm);
+@SqlQuery("SELECT * FROM suppliers WHERE name LIKE CONCAT('%',:searchTerm,'%') " +
+        "OR city LIKE CONCAT('%',:searchTerm,'%') OR email LIKE CONCAT('%',:searchTerm,'%')")
+@UseRowMapper(SuppliersMapper.class)
+List<Suppliers> getSuppliers(@Bind("searchTerm") String searchTerm);
 
     //Updates
     @SqlUpdate("INSERT INTO suppliers (name, tel, address,zip_code,city,country,website,email) VALUES (?,?,?,?,?,?,?,?)")

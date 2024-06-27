@@ -13,11 +13,18 @@ public class Database {
     public static Handle db;
 
     public static void connect() throws ClassNotFoundException, SQLException {
-        Class.forName("oracle.jdbc.driver.OracleDriver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
         jdbi = Jdbi.create(CONNECTION_STRING, USERNAME, PASSWORD);
         jdbi.installPlugin(new SqlObjectPlugin());
         db = jdbi.open();
     }
+// con oracle seria asi
+//    public static void connect() throws ClassNotFoundException, SQLException {
+//        Class.forName("oracle.jdbc.driver.OracleDriver");
+//        jdbi = Jdbi.create(CONNECTION_STRING, USERNAME, PASSWORD);
+//        jdbi.installPlugin(new SqlObjectPlugin());
+//        db = jdbi.open();
+//    }
 
     public void close() throws SQLException {
         db.close();
